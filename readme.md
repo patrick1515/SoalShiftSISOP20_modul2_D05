@@ -19,6 +19,8 @@ d. Program berjalan di background (daemon)
 
 e. Tidak boleh menggunakan fungsi system()
 
+### Penjelasan
+
 a. Program menerima 4 argumen berupa: i. Detik: 0-59 atau * (any value) ii. Menit: 0-59 atau * (any value) iii. Jam: 0-23 atau * (any value) iv. Path file .sh
 
 b.Program akan mengeluarkan pesan error jika argumen yang diberikan tidak

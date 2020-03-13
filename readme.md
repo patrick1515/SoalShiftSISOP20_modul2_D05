@@ -81,9 +81,11 @@ a. ```
     char *argv[] = {"mkdir","/home/asus/modul2/indomie"};
     execv("/bin/mkdir", argv);
   } else {
+  
     while ((wait(&status)) > 0);
     sleep(5);
-    if(fork()==0)
+  
+  if(fork()==0)
     {
       char *argv[] = {"mkdir","/home/asus/modul2/sedaap"};
       execv("/bin/mkdir", argv);
@@ -91,13 +93,14 @@ a. ```
     ```
 Setelah membuat child, program menyuruh child untuk membuat directory yang baru bernama indomie. Program akan membuat child lagi untuk membuat directory sedaap ketika parent sudah selesai menunggu proses sebelumnya berjalan (selama 5 detik)
 
-b. ```
-if(fork()==0)
+b.  ```
+ if(fork()==0)
     {
-      char *argv[] = {"unzip","/home/asus/modul2/jpg.zip"};
+      char *argv[] = {"unzip","/home/asus/modul2/jpg.zip", NULL};
       execv("/usr/bin/unzip", argv);
     }
-```
+    ```
+
 Program lalu membuat child baru lagi untuk ekstrak file zip yang ada dengan cara mengeksekusi fungsi unzip.
 
 c. ```
@@ -119,8 +122,8 @@ while ((wait(&status)) > 0);
 Program memindahkan file yang bertipe direktori (d) ke direktori sedaap yang sudah dibuat sebelumnya dengan fungsi find dengan kedalaman folder yang dicari sebanyak 1. 
 Program memindahkan file yang bertipe file (f) ke direktori indomie yang sudah dibuat sebelumnya dengan fungsi find dengan kedalaman folder yang dicari sebanyak 1.
 
-d. ```
- if(fork()==0)
+d.  ```
+  if(fork()==0)
           {
             char *argv[] = {"find", "/home/asus/modul2/indomie/.", "-mindepth", "1", "-type", "d", "-exec", "touch", "{}/coba1.txt", ";", NULL};
             execv("/usr/bin/find", argv);
@@ -131,5 +134,5 @@ d. ```
             sleep(3);
             char *argv[] = {"find", "/home/asus/modul2/indomie/.", "-mindepth", "1", "-type", "d", "-exec", "touch", "{}/coba2.txt", ";", NULL};
             execv("/usr/bin/find", argv);
- ```
+    ```
  Membuat file kosong bernama coba1.txt dan coba2.txt dengan selang waktu 3 detik ke direktori yang dipindah ke indomie.

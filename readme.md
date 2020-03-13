@@ -76,19 +76,21 @@ harus membuat dua file kosong. File yang pertama diberi nama “coba1.txt”, la
 
 ### Jawaban
 
-a. ```
- if (child_id == 0) {
-    char *argv[] = {"mkdir","/home/asus/modul2/indomie"};
-    execv("/bin/mkdir", argv);
-  } else {
-   while ((wait(&status)) > 0);
-    sleep(5);
-    if(fork()==0)
-    {
-      char *argv[] = {"mkdir","/home/asus/modul2/sedaap"};
-      execv("/bin/mkdir", argv);
-    }
-    ```
+a. 
+```
+if (child_id == 0) {
+char *argv[] = {"mkdir","/home/asus/modul2/indomie"};
+execv("/bin/mkdir", argv);
+} else {
+while ((wait(&status)) > 0);
+sleep(5);
+if(fork()==0)
+{
+char *argv[] = {"mkdir","/home/asus/modul2/sedaap"};
+execv("/bin/mkdir", argv);
+}
+```
+    
 Setelah membuat child, program menyuruh child untuk membuat directory yang baru bernama indomie. Program akan membuat child lagi untuk membuat directory sedaap ketika parent sudah selesai menunggu proses sebelumnya berjalan (selama 5 detik)
 
 b. 
@@ -96,7 +98,8 @@ b.
     {
       char *argv[] = {"unzip","/home/asus/modul2/jpg.zip", NULL};
       execv("/usr/bin/unzip", argv);
-    }```
+    }
+    ```
 
 Program lalu membuat child baru lagi untuk ekstrak file zip yang ada dengan cara mengeksekusi fungsi unzip.
 

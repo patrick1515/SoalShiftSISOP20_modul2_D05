@@ -94,7 +94,8 @@ execv("/bin/mkdir", argv);
 Setelah membuat child, program menyuruh child untuk membuat directory yang baru bernama indomie. Program akan membuat child lagi untuk membuat directory sedaap ketika parent sudah selesai menunggu proses sebelumnya berjalan (selama 5 detik)
 
 b. 
-```if(fork()==0)
+```
+if(fork()==0)
     {
       char *argv[] = {"unzip","/home/asus/modul2/jpg.zip", NULL};
       execv("/usr/bin/unzip", argv);
@@ -104,7 +105,8 @@ b.
 Program lalu membuat child baru lagi untuk ekstrak file zip yang ada dengan cara mengeksekusi fungsi unzip.
 
 c. 
-```while ((wait(&status)) > 0);
+```
+while ((wait(&status)) > 0);
       if(fork()==0)
       {
         char *argv[] = {"find", "/home/asus/modul2/jpg/.", "-maxdepth", "1", "-type", "d", "-exec", "mv", "{}", "/home/asus/modul2/indomie", ";", NULL};

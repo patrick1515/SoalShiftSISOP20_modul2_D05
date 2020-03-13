@@ -99,7 +99,7 @@ b.
       char *argv[] = {"unzip","/home/asus/modul2/jpg.zip", NULL};
       execv("/usr/bin/unzip", argv);
     }
-    ```
+```
 
 Program lalu membuat child baru lagi untuk ekstrak file zip yang ada dengan cara mengeksekusi fungsi unzip.
 
@@ -123,16 +123,17 @@ Program memindahkan file yang bertipe direktori (d) ke direktori sedaap yang sud
 Program memindahkan file yang bertipe file (f) ke direktori indomie yang sudah dibuat sebelumnya dengan fungsi find dengan kedalaman folder yang dicari sebanyak 1.
 
 d.
-```if(fork()==0)
-          {
-            char *argv[] = {"find", "/home/asus/modul2/indomie/.", "-mindepth", "1", "-type", "d", "-exec", "touch", "{}/coba1.txt", ";", NULL};
-            execv("/usr/bin/find", argv);
-          }
-          else
-          {
-            while ((wait(&status)) > 0);
-            sleep(3);
-            char *argv[] = {"find", "/home/asus/modul2/indomie/.", "-mindepth", "1", "-type", "d", "-exec", "touch", "{}/coba2.txt", ";", NULL};
-            execv("/usr/bin/find", argv);
- ```
- Membuat file kosong bernama coba1.txt dan coba2.txt dengan selang waktu 3 detik ke direktori yang dipindah ke indomie.
+```
+if(fork()==0){
+char *argv[] = {"find", "/home/asus/modul2/indomie/.", "-mindepth", "1", "-type", "d", "-exec", "touch", "{}/coba1.txt", ";", NULL};
+execv("/usr/bin/find", argv);
+}
+else
+{
+while ((wait(&status)) > 0);
+sleep(3);
+char *argv[] = {"find", "/home/asus/modul2/indomie/.", "-mindepth", "1", "-type", "d", "-exec", "touch", "{}/coba2.txt", ";", NULL};
+execv("/usr/bin/find", argv); 
+```
+
+Membuat file kosong bernama coba1.txt dan coba2.txt dengan selang waktu 3 detik ke direktori yang dipindah ke indomie.
